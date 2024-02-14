@@ -43,6 +43,18 @@ router.post('/', rejectUnauthenticated, (req, res) => {
  * Delete an item if it's something the logged in user added
  */
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  const itemId = req.params.id;
+  const user_id = req.user.id;
+  const queryText = `
+  DELETE FROM "item" WHERE "id" = $1 AND "user_id"=$2;
+  `;
+
+  pool.query(queryText, [itemId, user_id])
+  .then(() => res.sendStatus(204))
+  .catch((error) => {
+    console.error("ERROR in Shelf DELETE:", error);
+  });
+
   // endpoint functionality
 });
 
