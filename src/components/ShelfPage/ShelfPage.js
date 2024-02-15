@@ -39,7 +39,7 @@ function ShelfPage() {
       <ul>
         {items.map(item => (
           <div key={item.id} className="shelf-item">
-            <img src={item.url} alt={item.description} />
+            <img src={item.image_url} alt={item.description} />
             <p>{item.description}</p>
             {user.id === item.user_id &&
               <button onClick={removeItem} data-itemid={item.id}>Delete Item</button>
