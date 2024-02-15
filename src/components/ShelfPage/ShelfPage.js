@@ -25,7 +25,12 @@ function ShelfPage() {
           </div>
         ))}
       </ul>
-
+      <form>
+          <label for="description">Description</label><br/>
+          <input id="description" name="description" placeholder="Cool Description Here!"/><br/>
+          <label for="image_url">Image Url</label><br/>
+          <input id="image_url" name="image_url" placeholder="www.coolimage.com"/>
+      </form>
     </div>
   );
 }
