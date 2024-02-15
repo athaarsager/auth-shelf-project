@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 function ShelfPage() {
   const dispatch = useDispatch();
   const items = useSelector(store => store.items);
+  const [newItem, setNewItem] = useState({});
 
 
   useEffect(() => {
@@ -31,6 +32,7 @@ function ShelfPage() {
           <input id="description" name="description" placeholder="Cool Description Here!"/><br/>
           <label for="image_url">Image Url</label><br/>
           <input id="image_url" name="image_url" placeholder="www.coolimage.com"/>
+          <input type="submit">Submit!</input>
       </form>
     </div>
   );
