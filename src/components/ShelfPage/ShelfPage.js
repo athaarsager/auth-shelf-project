@@ -18,6 +18,7 @@ function ShelfPage() {
   const addItem = (e) => {
     e.preventDefault();
     dispatch({ type: "ADD_ITEM", payload: newItem });
+    setNewItem({description: "", image_url: ""});
   }
 
   const removeItem = (e) => {
@@ -26,7 +27,6 @@ function ShelfPage() {
 
   useEffect(() => {
     dispatch({ type: "FETCH_ITEMS" });
-    console.log("items are:", items);
   }, []);
 
 
