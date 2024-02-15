@@ -6,7 +6,7 @@ function ShelfPage() {
   const dispatch = useDispatch();
   const items = useSelector(store => store.itemsReducer);
   const user = useSelector(store => store.user);
-  const [newItem, setNewItem] = useState({user_id: user.id});
+  const [newItem, setNewItem] = useState({ user_id: user.id });
 
   const handleChange = (e) => {
     // create variable to hold key that is being changed in input. (name = input's name = key, value=value)
@@ -19,7 +19,7 @@ function ShelfPage() {
   const addItem = (e) => {
     e.preventDefault();
     dispatch({ type: "ADD_ITEM", payload: newItem });
-    setNewItem({description: "", image_url: ""});
+    setNewItem({ description: "", image_url: "" });
   }
 
   const removeItem = (e) => {
@@ -38,11 +38,13 @@ function ShelfPage() {
       <p>All of the available items can be seen here.</p>
       <ul>
         {items.map(item => (
-            <div key={item.id} className="shelf-item">
-              <img src={item.url} alt={item.description} />
-              <p>{item.description}</p>
+          <div key={item.id} className="shelf-item">
+            <img src={item.url} alt={item.description} />
+            <p>{item.description}</p>
+            {user.id === item.user_id &&
               <button onClick={removeItem} data-itemid={item.id}>Delete Item</button>
-            </div>
+            }
+          </div>
         ))}
       </ul>
       <h2>Add an Item to the Shelf!</h2>
@@ -51,7 +53,7 @@ function ShelfPage() {
         <input id="description" name="description" placeholder="Cool Description Here!" value={newItem.description} onChange={(handleChange)} /><br />
         <label htmlFor="image_url">Image Url</label><br />
         <input id="image_url" name="image_url" placeholder="www.coolimage.com" value={newItem.image_url} onChange={(handleChange)} />
-        <input type="submit"/>
+        <input type="submit" />
       </form>
     </div>
   );
