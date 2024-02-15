@@ -8,13 +8,19 @@ function ShelfPage() {
   const [newItem, setNewItem] = useState({});
 
   const handleChange = (e) => {
-
     // create variable to hold key that is being changed in input. (name = input's name = key, value=value)
     const { name, value } = e.target;
 
     setNewItem((currentInfo) => ({ ...currentInfo, [name]: value }));
 
   }
+
+  const addItem = (e) => {
+    e.preventDefault();
+    dispatch({type: "ADD_ITEM", payload: newItem});
+  }
+
+  //DELETE_ITEM
 
   useEffect(() => {
     dispatch({ type: "FETCH_ITEMS" });
