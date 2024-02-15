@@ -17,11 +17,11 @@ function ShelfPage() {
 
   const addItem = (e) => {
     e.preventDefault();
-    dispatch({type: "ADD_ITEM", payload: newItem});
+    dispatch({ type: "ADD_ITEM", payload: newItem });
   }
 
   const removeItem = (e) => {
-    dispatch({type: "DELETE_ITEM", payload: e.target.dataset.itemid});
+    dispatch({ type: "DELETE_ITEM", payload: e.target.dataset.itemid });
   }
 
   useEffect(() => {
@@ -36,20 +36,20 @@ function ShelfPage() {
       <p>All of the available items can be seen here.</p>
       <ul>
         {items.map(item => (
-          <div key={item.id} class="shelf-item">
-            <img src={item.url} alt={item.description} />
-            <p>{item.description}</p>
-            <button onClick={removeItem} data-itemid={item.id}>Delete Item</button>
-          </div>
+            <div key={item.id} className="shelf-item">
+              <img src={item.url} alt={item.description} />
+              <p>{item.description}</p>
+              <button onClick={removeItem} data-itemid={item.id}>Delete Item</button>
+            </div>
         ))}
       </ul>
       <h2>Add an Item to the Shelf!</h2>
       <form onSubmit={addItem}>
-          <label htmlFor="description">Description</label><br/>
-          <input id="description" name="description" placeholder="Cool Description Here!" value={newItem.description} onChange={(handleChange)}/><br/>
-          <label htmlFor="image_url">Image Url</label><br/>
-          <input id="image_url" name="image_url" placeholder="www.coolimage.com" value={newItem.image_url} onChange={(handleChange)}/>
-          <input type="submit">Submit!</input>
+        <label htmlFor="description">Description</label><br />
+        <input id="description" name="description" placeholder="Cool Description Here!" value={newItem.description} onChange={(handleChange)} /><br />
+        <label htmlFor="image_url">Image Url</label><br />
+        <input id="image_url" name="image_url" placeholder="www.coolimage.com" value={newItem.image_url} onChange={(handleChange)} />
+        <input type="submit"/>
       </form>
     </div>
   );
