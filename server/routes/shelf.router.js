@@ -45,6 +45,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const itemId = req.params.id;
   const user_id = req.user.id;
+  console.log(user_id);
   const queryText = `
   DELETE FROM "item" WHERE "id" = $1 AND "user_id"=$2;
   `;

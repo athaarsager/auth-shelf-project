@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 function ShelfPage() {
   const dispatch = useDispatch();
   const items = useSelector(store => store.itemsReducer);
-  const [newItem, setNewItem] = useState({});
+  const user = useSelector(store => store.user);
+  const [newItem, setNewItem] = useState({user_id: user.id});
 
   const handleChange = (e) => {
     // create variable to hold key that is being changed in input. (name = input's name = key, value=value)
@@ -22,6 +23,7 @@ function ShelfPage() {
   }
 
   const removeItem = (e) => {
+    alert(e.target.dataset.itemid);
     dispatch({ type: "DELETE_ITEM", payload: e.target.dataset.itemid });
   }
 
