@@ -7,6 +7,14 @@ function ShelfPage() {
   const items = useSelector(store => store.items);
   const [newItem, setNewItem] = useState({});
 
+  const handleChange = (e) => {
+
+    // create variable to hold key that is being changed in input. (name = input's name = key, value=value)
+    const { name, value } = e.target;
+
+    setNewItem((currentInfo) => ({ ...currentInfo, [name]: value }));
+
+  }
 
   useEffect(() => {
     dispatch({ type: "FETCH_ITEMS" });
@@ -29,9 +37,9 @@ function ShelfPage() {
       <h2>Add an Item to the Shelf!</h2>
       <form>
           <label for="description">Description</label><br/>
-          <input id="description" name="description" placeholder="Cool Description Here!"/><br/>
+          <input id="description" name="description" placeholder="Cool Description Here!" value={newItem.description} onChange={(handleChange)}/><br/>
           <label for="image_url">Image Url</label><br/>
-          <input id="image_url" name="image_url" placeholder="www.coolimage.com"/>
+          <input id="image_url" name="image_url" placeholder="www.coolimage.com" value={newItem.image_url} onChange={(handleChange)}/>
           <input type="submit">Submit!</input>
       </form>
     </div>
