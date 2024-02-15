@@ -8,9 +8,9 @@ function ShelfPage() {
 
 
   useEffect(() => {
-    dispatch({type: "FETCH_ITEMS"});
+    dispatch({ type: "FETCH_ITEMS" });
   }, []);
-  
+
 
   return (
     <div className="container">
@@ -21,10 +21,10 @@ function ShelfPage() {
           <div key={item.id} class="shelf-item">
             <img src={item.url} alt={item.description} />
             <p>{item.description}</p>
+            <button>Delete Item</button>
           </div>
         ))}
       </ul>
-
 
     </div>
   );
