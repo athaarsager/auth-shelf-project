@@ -20,7 +20,9 @@ function ShelfPage() {
     dispatch({type: "ADD_ITEM", payload: newItem});
   }
 
-  //DELETE_ITEM
+  const removeItem = (e) => {
+    dispatch({type: "DELETE_ITEM", payload: e.target.dataset.itemid});
+  }
 
   useEffect(() => {
     dispatch({ type: "FETCH_ITEMS" });
@@ -36,12 +38,12 @@ function ShelfPage() {
           <div key={item.id} class="shelf-item">
             <img src={item.url} alt={item.description} />
             <p>{item.description}</p>
-            <button>Delete Item</button>
+            <button onClick={removeItem} data-itemid={item.id}>Delete Item</button>
           </div>
         ))}
       </ul>
       <h2>Add an Item to the Shelf!</h2>
-      <form>
+      <form onSubmit={addItem}>
           <label for="description">Description</label><br/>
           <input id="description" name="description" placeholder="Cool Description Here!" value={newItem.description} onChange={(handleChange)}/><br/>
           <label for="image_url">Image Url</label><br/>
