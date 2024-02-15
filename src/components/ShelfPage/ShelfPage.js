@@ -25,6 +25,7 @@ function ShelfPage() {
           </div>
         ))}
       </ul>
+      <h2>Add an Item to the Shelf!</h2>
       <form>
           <label for="description">Description</label><br/>
           <input id="description" name="description" placeholder="Cool Description Here!"/><br/>
